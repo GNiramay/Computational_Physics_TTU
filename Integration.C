@@ -1,1 +1,72 @@
 // File to store the commonly used methods of numerical integration
+
+#include<iostream>
+#include<math.h> 
+#include<vector>
+using namespace std;
+
+/*
+ * @brief return integral of function using different algorithms
+ * @par x vector of doubles where the function is evaluated
+ * @par y vector of doubles storing function values
+ * @par method string specifying which algorithm to use. Values are: trapezoidal,simpson13,bode
+*/
+
+double Integrate1(vector<double>x,vector<double>y, string method)
+{
+  int N = x.size();		// No. of steps considered
+  double h = (x[N-1]-x[0])/N;	// step size
+  double integral=0;		// Integral
+
+  // Trapezoidal method
+  if(method=="trapezoidal"){
+    if(N%2 != 1){
+      printf("Error. vector size = %i\n",N);
+      printf("Odd nunber of points needed for integration\n");
+      return -1;
+    }
+    for(int i=0;i<N;i+=2){
+      integral+= h*(
+		    y[i]
+		    +2*y[i+1]
+		    +y[i+2]
+		    )/2;
+    }
+  }
+
+  // Simpson's 1/3 rule
+  if(method=="simpson13"){
+    if(N%2 != 1){
+      printf("Error. vector size = %i\n",N);
+      printf("Odd nunber of points needed for integration\n");
+      return -1;
+    }
+    for(int i=0;i<N;i+=2){
+      integral+= h*(
+		    y[i]
+		    +4*y[i+1]
+		    +y[i+2]
+		    )/3;
+    }
+  }
+  
+  // Bode's rule
+  if(method=="bode"){
+    if(N%4 != 1){
+      printf("Error. vector size = %i\n",N);
+      printf("4n+1 nunber of points needed for integration\n");
+      return -1;
+    }
+    for(int i=0;i<N;i+=4){
+      integral+= 2*h*(
+		      7*y[i]
+		      +32*y[i+1]
+		      +12*y[i+2]
+		      +32*y[i+3]
+		      +7*y[i+4]
+		      )/45;
+    }
+  }
+  
+  return integral;
+}
