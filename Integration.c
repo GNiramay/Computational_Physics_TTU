@@ -1,16 +1,7 @@
 // File to store the commonly used methods of numerical integration
 
-#include<iostream>
-#include<math.h> 
-#include<vector>
+#include"MainLibrary.h"
 using namespace std;
-
-/*
- * @brief return integral of function using different algorithms
- * @par x vector of doubles where the function is evaluated
- * @par y vector of doubles storing function values
- * @par method string specifying which algorithm to use. Values are: trapezoidal,simpson13,bode
-*/
 
 double Integrate1(vector<double>x,vector<double>y, string method)
 {

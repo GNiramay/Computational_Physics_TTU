@@ -1,8 +1,6 @@
 // C++ script to solve the first assignment.
-#include<iostream>
-#include<math.h>
-#include<vector>
-#include"Integration.C"
+
+#include"MainLibrary.h"
 using namespace std;
 
 // Q1. Write a program to find integral exp(x) from 0 to 1. Use Trapezoidal, Simponson's and Bode's rule to calculate the integral. Increase the numer of steps from 4,8,16,...128 and compare the results with the analytical result. (Analytically, integral = e-1)
