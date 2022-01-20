@@ -6,7 +6,7 @@ using namespace std;
 double Integrate1(vector<double>x,vector<double>y, string method)
 {
   int N = x.size();		// No. of steps considered
-  double h = (x[N-1]-x[0])/N;	// step size
+  double h = x[1]-x[0];		// step size
   double integral=0;		// Integral
 
   // Trapezoidal method
