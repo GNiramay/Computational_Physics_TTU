@@ -15,7 +15,7 @@ To see the output for an assignment, do the following
 3. Run the executable.
 
 # Example
-The output for assignment 2 would be generated using the above steps. The terminal output would look something like the following
+The output for assignment 1 would be generated using the above steps. The terminal output would look something like the following
 
 ```
 $ make
@@ -23,7 +23,7 @@ g++ -Wall -c -o Integration.o Integration.c
 g++ -Wall -o Assignment1.app Assignment1.C Integration.o
 g++ -Wall -c -o RootFinding.o RootFinding.c
 g++ -Wall -o Assignment2.app Assignment2.C RootFinding.o
-$ ./Assignment2.app
+$ ./Assignment1.app
 Question 1
 N	Trapez.	Simpson	Bode
 4	1.6536	1.5559	1.6460
