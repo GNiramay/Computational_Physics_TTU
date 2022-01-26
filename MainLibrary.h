@@ -33,4 +33,14 @@ double Newton(double (*func)(double,int), double x0, int iter, double tol=0);
  * @par tol tolerance level. It's zero by default.
  */
 double Secant(double (*func)(double), double x0, double x1, int iter, double tol=0);
+
+/*
+ * @descr Returns root of the function by iterative search
+ * @par func pointer to the function whose root needs to be found out
+ * @par step_size the initial step size for search
+ * @par x0 initial guess
+ * @par iter Number of iterations to run for
+ * @par tol
+*/
+double Search(double (*func)(double), double step_size, double x0, int iter, double tol=0);
 #endif

@@ -38,3 +38,20 @@ double Secant(double (*func)(double), double x0, double x1, int iter, double tol
   }
   return X1;
 }
+
+double Search(double (*func)(double), double step_size, double x0, int iter, double tol)
+{
+  double h = step_size;		// Step size. Will change over time
+  double root=x0;		// root of the function
+
+  if(abs(func(x0+h))>abs(func(x0-h)))
+    h = -h;
+
+  for(int i=0;i<iter;i++){
+    if(func(root)*func(root+h)<0) h = h/2;
+    else root+=h;
+    if(abs(func(root))<=tol) return root;
+  }
+
+  return root;
+}
