@@ -5,7 +5,7 @@ using namespace std;
 
 /*
  * @descr return value of x^2-5.
- * @par x value at wich function needs to be valuated
+ * @par x value at which function needs to be evaluated
  * @par opt integer specifying what to return. opt=0->f(x), opt=1->f'(x)
 */
 double func1(double x,int opt=0);

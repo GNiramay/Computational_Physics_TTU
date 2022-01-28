@@ -43,15 +43,27 @@ double Search(double (*func)(double), double step_size, double x0, int iter, dou
 {
   double h = step_size;		// Step size. Will change over time
   double root=x0;		// root of the function
+  int N = 0;			// Counter for the number of iterations ellapsed
 
   if(abs(func(x0+h))>abs(func(x0-h)))
     h = -h;
 
-  for(int i=0;i<iter;i++){
-    if(func(root)*func(root+h)<0) h = h/2;
-    else root+=h;
-    if(abs(func(root))<=tol) return root;
+  for(int i=0;i<iter;i++){    
+    if(func(root)*func(root+h)<0) {
+      N=i;
+      break;
+    }
+    else if(abs(func(root))<=tol) return root;    
+    else root+=h;    
   }
 
-  return root;
+  for(int i=0;i<iter-N;i++){
+    if(func(root)*func(root+h)<0) {
+      h = h/2;
+    }
+    else if(abs(func(root))<=tol) return root;
+    else root+=h;
+  }
+
+  return root+h;
 }
