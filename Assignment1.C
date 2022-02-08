@@ -18,14 +18,15 @@ int main()
 
 void Question1()
 {
-  double xmin = 0;
-  double xmax = 1;
+  double xmin = 0.0;
+  double xmax = 1.0;
+  double Itrue = 1.71828182846;	// e-1
   printf("Question 1\nN\tTrapez.\tSimpson\tBode\n");
-  for(double N=4;N<=128;N=N*2){
+  for(double N=4.0;N<=128.0;N=N*2.0){
     vector<double>x,y;
     double h = (xmax-xmin)/N;
     
-    for(double i=0;i<=N;i++){
+    for(double i=0.0;i<=N;i++){
       double x_ = xmin+h*i;
       x.push_back(x_);
       y.push_back(exp(x_));
@@ -35,26 +36,39 @@ void Question1()
     printf("\t%.4f",Integrate1(x,y,"simpson13"));
     printf("\t%.4f\n",Integrate1(x,y,"bode"));
   }
+  printf("Analytical solution: %.4f\n",Itrue);
 }
 
 void Question2()
 {
-  double xmin = 0.001;
-  double xmax = 0.999;
+  double x1min = 0.0;
+  double x1max = pow(0.5,1.0/3.0);
+  double x2min = 0.0;
+  double x2max = pow(0.5,2.0/3.0);
+  
+  double Itrue = 3.62759872847;
   printf("\nQuestion 2\nN\tTrapez.\tSimpson\tBode\n");
-  for(double N=4;N<=128;N=N*2){
-    vector<double>x,y;
-    double h = (xmax-xmin)/N;
+  // for(double N=4.0;N<=128.0;N=N*2.0){
+  for(double N=4.0;N<=20480.0;N=N*2.0){
+    vector<double>x1,x2,y1,y2;
+    double h1 = (x1max-x1min)/N;
+    double h2 = (x2max-x2min)/N;
 
-    for(double i=0;i<=N;i++){
-      double x_ = xmin+h*i;
-      x.push_back(x_);
-      double y_ = pow(x_*x_*(1-x_),-1./3.);
-      y.push_back(y_);
+    for(double i=0.0;i<=N;i++){
+      double x1_ = x1min+h1*i;
+      double x2_ = x2min+h2*i;
+      double y1_ = 3.0*pow(1.0-x1_*x1_*x1_,-1.0/3.0);
+      double y2_ = 1.5*pow(1.0- pow(x1_,1.5),-2.0/3.0);
+      // if(N==128) printf("\t%.4f\t%.4f\t%.4f\t%.4f\n",x1_,y1_,x2_,y2_);
+      x1.push_back(x1_);
+      x2.push_back(x2_);
+      y1.push_back(y1_);
+      y2.push_back(y2_);
     }
     
-    printf("%.0f\t%.4f",N,Integrate1(x,y,"trapezoidal"));
-    printf("\t%.4f",Integrate1(x,y,"simpson13"));
-    printf("\t%.4f\n",Integrate1(x,y,"bode"));
+    printf("%.0f\t%.4f",N,Integrate1(x1,y1,"trapezoidal")+Integrate1(x2,y2,"trapezoidal"));
+    printf("\t%.4f",Integrate1(x1,y1,"simpson13")+Integrate1(x2,y2,"simpson13"));
+    printf("\t%.4f\n",Integrate1(x1,y1,"bode")+Integrate1(x2,y2,"bode"));
   }
+  printf("Analytical solution: %.4f\n",Itrue);
 }
