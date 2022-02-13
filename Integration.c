@@ -16,12 +16,8 @@ double Integrate1(vector<double>x,vector<double>y, string method)
       printf("Odd nunber of points needed for integration\n");
       return -1;
     }
-    for(int i=0;i<N;i+=2){
-      integral+= h*(
-		    y[i]
-		    +2*y[i+1]
-		    +y[i+2]
-		    )/2;
+    for(int i=0;i<N-1;i++){
+      integral += h*(y[i]+y[i+1])/2;
     }
   }
 
@@ -32,7 +28,7 @@ double Integrate1(vector<double>x,vector<double>y, string method)
       printf("Odd nunber of points needed for integration\n");
       return -1;
     }
-    for(int i=0;i<N;i+=2){
+    for(int i=0;i<N-2;i+=2){
       integral+= h*(
 		    y[i]
 		    +4*y[i+1]
@@ -48,7 +44,7 @@ double Integrate1(vector<double>x,vector<double>y, string method)
       printf("4n+1 nunber of points needed for integration\n");
       return -1;
     }
-    for(int i=0;i<N;i+=4){
+    for(int i=0;i<N-4;i+=4){
       integral+= 2*h*(
 		      7*y[i]
 		      +32*y[i+1]
