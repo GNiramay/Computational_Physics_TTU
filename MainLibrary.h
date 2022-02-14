@@ -43,4 +43,12 @@ double Secant(double (*func)(double), double x0, double x1, int iter, double tol
  * @par tol
 */
 double Search(double (*func)(double), double step_size, double x0, int iter, double tol=0);
+
+/*
+ * @brief return integral of function using Runge-Kutta family of algorithms
+ * @par x vector of doubles where the function is evaluated
+ * @par y vector of doubles storing function values
+ * @par method string specifying which algorithm to use. Values are: trapezoidal,simpson13,bode
+*/
+double RungeKutta(vector<double>x,vector<double>y, string method);
 #endif

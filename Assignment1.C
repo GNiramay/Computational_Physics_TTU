@@ -32,11 +32,10 @@ void Question1()
       y.push_back(exp(x_));
     }
     
-    printf("%.0f\t%.8f",N,Integrate1(x,y,"trapezoidal"));
-    printf("\t%.8f",Integrate1(x,y,"simpson13"));
-    printf("\t%.8f\n",Integrate1(x,y,"bode"));
+    printf("%.0f\t%.4E",N,Integrate1(x,y,"trapezoidal")-Itrue);
+    printf("\t%.4E",Integrate1(x,y,"simpson13")-Itrue);
+    printf("\t%.4E\n",Integrate1(x,y,"bode")-Itrue);
   }
-  printf("Analytical solution: %.8f\n",Itrue);
 }
 
 void Question2()
@@ -63,10 +62,8 @@ void Question2()
       y1.push_back(y1_);
       y2.push_back(y2_);
     }
-    
-    printf("%.0f\t%.8f",N,Integrate1(x1,y1,"trapezoidal")+Integrate1(x2,y2,"trapezoidal"));
-    printf("\t%.8f",Integrate1(x1,y1,"simpson13")+Integrate1(x2,y2,"simpson13"));
-    printf("\t%.8f\n",Integrate1(x1,y1,"bode")+Integrate1(x2,y2,"bode"));
+    printf("%.0f\t%.4E",N,Integrate1(x1,y1,"trapezoidal")+Integrate1(x2,y2,"trapezoidal")-Itrue);
+    printf("\t%.4E",Integrate1(x1,y1,"simpson13")+Integrate1(x2,y2,"simpson13")-Itrue);
+    printf("\t%.4E\n",Integrate1(x1,y1,"bode")+Integrate1(x2,y2,"bode")-Itrue);
   }
-  printf("Analytical solution: %.8f\n",Itrue);
 }

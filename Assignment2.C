@@ -20,13 +20,13 @@ int main()
 {
   double x0=0;
   double x1=1;
-  printf("N\tNewton\tSecant\tSearch\n");
+  printf("N\tNewton\t\tSecant\t\tSearch\n");
   
   for(double i=1;i<34;i++){
     double rnewton = Newton(&func1,x1,i);
     double rsecant = Secant(&func2,x0,x1,i);
     double rsearch = Search(&func2,(x1-x0)/2,x1,i);
-    printf("%.0f\t%.4f\t%.4f\t%.4f\n",i,func1(rnewton),func2(rsecant),func2(rsearch));
+    printf("%.0f\t%.4E\t%.4E\t%.4E\n",i,func1(rnewton),func2(rsecant),func2(rsearch));
   }
   return 0;
 }
