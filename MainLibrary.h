@@ -46,9 +46,33 @@ double Search(double (*func)(double), double step_size, double x0, int iter, dou
 
 /*
  * @brief return integral of function using Runge-Kutta family of algorithms
- * @par x vector of doubles where the function is evaluated
- * @par y vector of doubles storing function values
- * @par method string specifying which algorithm to use. Values are: trapezoidal,simpson13,bode
+ * @par opt integer specifying which algorithm to use. Values are: 4
+ * @par x0 Initial x-value
+ * @par y0 Initial y-value
+ * @par x1 x-value at which y needs to be evaluated
+ * @par h step size
+ * @par func pointer to the function f(x,y) used in ODE: dy/dx = f(x,y)
 */
-double RungeKutta(vector<double>x,vector<double>y, string method);
+double RungeKutta(int opt,double x0,double y0,double x1,double h,double (*func)(double,double));
+
+/*
+ * @brief solves ODE using Euler's method
+ * @par x0 Initial x-value
+ * @par y0 Initial y-value
+ * @par x1 x-value at which y needs to be evaluated
+ * @par h step size
+ * @par func pointer to the function f(x,y) used in ODE: dy/dx = f(x,y)
+*/
+double Euler(double x0,double y0,double x1,double h,double (*func)(double,double));
+
+/*
+ * @brief solves ODE by Taylor's series expansion
+ * @par x0 Initial x-value
+ * @par y0 Initial y-value
+ * @par x1 x-value at which y needs to be evaluated
+ * @par h step size
+ * @par func pointer to the function f(x,y) used in ODE: dy/dx = f(x,y)
+ * @note func requires 3 params. 3rd one specifying the derivative
+*/
+double Taylor(double x0,double y0,double x1,double h,double (*func)(double,double,int));
 #endif
