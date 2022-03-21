@@ -1,6 +1,6 @@
 // File to store the commonly used methods of numerical integration
-
 #include"MainLibrary.h"
+
 using namespace std;
 
 double Integrate1(vector<double>x,vector<double>y, string method)
@@ -56,4 +56,15 @@ double Integrate1(vector<double>x,vector<double>y, string method)
   }
   
   return integral;
+}
+
+double MonteCarlo2D(vector<double> x,vector<double> y,double area,double (*func)(double,double))
+{
+  double npts = x.size();		// no. of points
+  double result = 0;		// The integral
+  for(int i=0;i<(int)npts;i++){
+    result += func(x[i],y[i]);
+  }
+  result  = result/npts;
+  return result*area;
 }

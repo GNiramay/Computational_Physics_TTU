@@ -5,6 +5,8 @@
 #include<iostream>
 #include<math.h> 
 #include<vector>
+#include <stdio.h>
+#include <stdlib.h>
 using namespace std;
 
 /*
@@ -75,4 +77,14 @@ double Euler(double x0,double y0,double x1,double h,double (*func)(double,double
  * @note func requires 3 params. 3rd one specifying the derivative
 */
 double Taylor(double x0,double y0,double x1,double h,double (*func)(double,double,int));
+
+
+/*
+ * @brief Monte Carlo integration eithout random numbers
+ * @ par N number of points to consider
+ * @par x1 the lower bound for integration
+ * @par x2 the upper bound for integration
+ * @par func pointer to the function to be integrated
+*/
+double MonteCarlo2D(vector<double> x,vector<double> y,double area,double (*func)(double,double));
 #endif
