@@ -68,3 +68,13 @@ double MonteCarlo2D(vector<double> x,vector<double> y,double area,double (*func)
   result  = result/npts;
   return result*area;
 }
+
+double MonteCarlo3D(vector<double>x,vector<double>y,vector<double>z,double vol,double (*func)(double,double)){
+  double ntot = x.size();
+  double ngood{0.};		// number of good points (points under the curve)
+  for(int i=0;i<(int)ntot;i++){
+    double f_xy = func(x[i],y[i]);
+    if(f_xy>=z[i]) ngood++;
+  }
+  return vol*ngood/ntot;
+}

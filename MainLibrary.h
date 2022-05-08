@@ -87,4 +87,13 @@ double Taylor(double x0,double y0,double x1,double h,double (*func)(double,doubl
  * @par func pointer to the function to be integrated
 */
 double MonteCarlo2D(vector<double> x,vector<double> y,double area,double (*func)(double,double));
+
+/*
+ * @brief Monte Carlo integration of functions z = f(x,y)
+ * @ par x,y,z vectors storing coordnates of the points used for integration
+ * @par vol the volume enclosing the random points (Should be more than the expected integral value)
+ * @par func pointer to the function f(x,y) to be integrated
+*/
+double MonteCarlo3D(vector<double>x,vector<double>y,vector<double>z,double vol,double (*func)(double,double));
+
 #endif
